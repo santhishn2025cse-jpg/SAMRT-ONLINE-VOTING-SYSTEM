@@ -28,9 +28,14 @@
                 <input type="text" id="name" name="name" required placeholder="e.g. John Doe" style="width: 100%; padding: 0.8rem; border: 2px solid #e2e8f0; border-radius: 12px; font-family: inherit; font-size: 1rem; box-sizing: border-box; outline: none; transition: border-color 0.2s;">
             </div>
 
-            <div class="input-group" style="margin-bottom: 2rem;">
+            <div class="input-group" style="margin-bottom: 1.25rem;">
                 <label for="registration_no" style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.95rem;">Registration Number</label>
                 <input type="text" id="registration_no" name="registration_no" required placeholder="e.g. 104230" style="width: 100%; padding: 0.8rem; border: 2px solid #e2e8f0; border-radius: 12px; font-family: inherit; font-size: 1rem; box-sizing: border-box; outline: none; transition: border-color 0.2s;">
+            </div>
+
+            <div class="input-group" style="margin-bottom: 2rem;">
+                <label for="age" style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.95rem;">Age Verification</label>
+                <input type="number" id="age" name="age" required min="1" max="130" placeholder="Enter your age" style="width: 100%; padding: 0.8rem; border: 2px solid #e2e8f0; border-radius: 12px; font-family: inherit; font-size: 1rem; box-sizing: border-box; outline: none; transition: border-color 0.2s;">
             </div>
             
             <button type="submit" class="btn">Proceed to Ballot</button>

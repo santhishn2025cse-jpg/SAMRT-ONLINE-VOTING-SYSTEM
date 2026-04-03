@@ -24,9 +24,16 @@ def home():
 def register():
     name = request.form.get('name')
     registration_no = request.form.get('registration_no')
+    age = request.form.get('age')
     
-    if not name or not registration_no or not registration_no.strip():
-        return render_template('register.html', error="Both Name and Registration Number are required.")
+    if not name or not registration_no or not registration_no.strip() or not age:
+        return render_template('register.html', error="Name, Registration Number, and Age are required.")
+        
+    try:
+        if int(age) < 18:
+            return render_template('register.html', error="Age verification failed: You must be at least 18 years old to vote.")
+    except ValueError:
+        return render_template('register.html', error="Please enter a valid numerical age.")
     
     registration_no = registration_no.strip()
         
