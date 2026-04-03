@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote for Your Favorite Tech</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Tech Stack Voting</h1>
+        <p class="subtitle">Welcome, <strong style="color: var(--primary-color);">{{ name }}</strong>! Cast your vote securely below.</p>
+        
+        <form action="/vote" method="POST">
+            {% if error %}
+            <div class="error-msg" style="color: #b91c1c; background: #fee2e2; padding: 0.75rem; border-radius: 8px; margin-bottom: 1.5rem; text-align: center; border: 1px solid #fca5a5; font-weight: 500;">
+                {{ error }}
+            </div>
+            {% endif %}
+
+            <div class="options">
+                {% for candidate in candidates %}
+                <label class="option-card">
+                    <input type="radio" name="candidate" value="{{ candidate }}" required>
+                    <span class="radio-mark"></span>
+                    <span class="option-text">{{ candidate }}</span>
+                </label>
+                {% endfor %}
+            </div>
+            
+            <button type="submit" class="btn">Submit Vote</button>
+        </form>
+    </div>
+</body>
+</html>

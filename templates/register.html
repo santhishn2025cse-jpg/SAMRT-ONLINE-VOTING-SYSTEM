@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voter Registration & Verification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .input-group input:focus {
+            border-color: var(--primary-color) !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Voter Verification</h1>
+        <p class="subtitle">Please enter your details to verify your identity and access the ballot.</p>
+        
+        <form action="/register" method="POST">
+            {% if error %}
+            <div class="error-msg" style="color: #b91c1c; background: #fee2e2; padding: 0.75rem; border-radius: 8px; margin-bottom: 1.5rem; text-align: center; border: 1px solid #fca5a5; font-weight: 500;">
+                {{ error }}
+            </div>
+            {% endif %}
+
+            <div class="input-group" style="margin-bottom: 1.25rem;">
+                <label for="name" style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.95rem;">Full Name</label>
+                <input type="text" id="name" name="name" required placeholder="e.g. John Doe" style="width: 100%; padding: 0.8rem; border: 2px solid #e2e8f0; border-radius: 12px; font-family: inherit; font-size: 1rem; box-sizing: border-box; outline: none; transition: border-color 0.2s;">
+            </div>
+
+            <div class="input-group" style="margin-bottom: 2rem;">
+                <label for="registration_no" style="display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.95rem;">Registration Number</label>
+                <input type="text" id="registration_no" name="registration_no" required placeholder="e.g. 104230" style="width: 100%; padding: 0.8rem; border: 2px solid #e2e8f0; border-radius: 12px; font-family: inherit; font-size: 1rem; box-sizing: border-box; outline: none; transition: border-color 0.2s;">
+            </div>
+            
+            <button type="submit" class="btn">Proceed to Ballot</button>
+        </form>
+        <a href="/results" class="footer-link">Or view live results</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Live Results</h1>
+        <p class="subtitle">Total votes cast: {{ total_votes }}</p>
+        
+        <div class="results-list">
+            {% for candidate, count in results.items() %}
+            <div class="result-item">
+                <div class="result-header">
+                    <span class="candidate-name">{{ candidate }}</span>
+                    <span class="vote-count">{{ count }} vote{% if count != 1 %}s{% endif %}</span>
+                </div>
+                <div class="progress-bar-bg">
+                    {% set percentage = 0 %}
+                    {% if total_votes > 0 %}
+                        {% set percentage = (count / total_votes * 100) | round(1) %}
+                    {% endif %}
+                    <div class="progress-bar-fill" style="width: {{ percentage }}%;"></div>
+                </div>
+                <div style="font-size: 0.8rem; text-align: right; margin-top: 0.4rem; color: var(--text-light); font-weight: 500;">
+                    {{ percentage }}%
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <a href="/" class="footer-link">Back to voting</a>
+    </div>
+</body>
+</html>
